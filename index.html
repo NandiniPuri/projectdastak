@@ -1,142 +1,400 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Project Dastak</title>
 
-  <link rel="stylesheet" href="style.css">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;800&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <div class="logo">
+      Project <span>Dastak</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="#problem">The Problem</a>
+      <a href="#timeline">Roadmap</a>
+      <a href="#playbook">Playbook</a>
+      <a href="#founder">Founder</a>
+    </div>
+
+    <a href="#contact" class="nav-btn">
+      Join Us
+    </a>
+
+  </nav>
+
+  <!-- HERO -->
+
   <section class="hero">
 
-    <div class="hero-content">
+    <div class="hero-blob"></div>
 
-      <h1>PROJECT DASTAK</h1>
+    <div class="hero-left">
 
-      <h2>Opening their doors to the world.</h2>
+      <div class="hero-pill">
+        SDG 4 · SDG 5 · SDG 16
+      </div>
 
-      <p>
-        Policy shapes the life of every child and every girl.
-        Yet, no one teaches them to read it.
+      <h1>
+        Opening their doors to the world.
+      </h1>
+
+      <p class="hero-text">
+        Project Dastak teaches girls the language of policy,
+        civic participation, and institutional power —
+        because voice should never be gated by privilege.
       </p>
 
-      <a href="#mission" class="btn">
-        Explore
-      </a>
+      <div class="hero-buttons">
+
+        <a href="#playbook" class="primary-btn">
+          Explore the Playbook
+        </a>
+
+        <a href="#problem" class="secondary-btn">
+          Why this matters →
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="hero-right">
+
+      <div class="floating-card">
+
+        <div class="stats-grid">
+
+          <div class="stat-box">
+            <h3>4</h3>
+            <p>Workshops</p>
+          </div>
+
+          <div class="stat-box">
+            <h3>30+</h3>
+            <p>Girls Reached</p>
+          </div>
+
+          <div class="stat-box">
+            <h3>1</h3>
+            <p>Policy Brief</p>
+          </div>
+
+        </div>
+
+        <p class="card-text">
+          Civic literacy initiative rooted in Delhi,
+          designed to create scalable policy education
+          for underserved girl students.
+        </p>
+
+        <div class="tag-row">
+          <span>Policy Literacy</span>
+          <span>Gender Equity</span>
+          <span>Open Source</span>
+        </div>
+
+      </div>
+
+      <div class="mini-founder-card">
+
+        <div class="founder-avatar">
+          NP
+        </div>
+
+        <div>
+          <h4>Nandini Puri</h4>
+          <p>Lady Shri Ram College for Women</p>
+        </div>
+
+      </div>
 
     </div>
 
   </section>
 
-  <section class="stats" id="mission">
+  <!-- PROBLEM -->
 
-    <div class="stat-box">
-      <h3>49%</h3>
-      <p>
-        of Indian women have never participated
-        in civic engagement.
+  <section class="problem-section" id="problem">
+
+    <div class="problem-left">
+
+      <p class="section-label">
+        THE PROBLEM
       </p>
+
+      <h2>
+        Policy shapes every girl's life.
+        Yet no one teaches her to read it.
+      </h2>
+
+      <p class="problem-text">
+        Across India, millions of girls grow up under systems
+        shaped entirely by policy decisions —
+        education schemes, welfare access, safety laws,
+        and institutional structures —
+        while remaining excluded from understanding them.
+      </p>
+
+      <p class="problem-text">
+        Project Dastak exists to bridge that distance between
+        governance and lived experience.
+      </p>
+
     </div>
 
-    <div class="stat-box">
-      <h3>1 in 3</h3>
-      <p>
-        girls cannot identify a welfare scheme
-        available to them.
-      </p>
-    </div>
+    <div class="problem-right">
 
-    <div class="stat-box">
-      <h3>0</h3>
-      <p>
-        structured civic literacy curricula exist
-        for underserved girls.
-      </p>
+      <div class="impact-card">
+        <h3>49%</h3>
+        <p>
+          of Indian women have never participated
+          in civic engagement.
+        </p>
+      </div>
+
+      <div class="impact-card">
+        <h3>1 in 3</h3>
+        <p>
+          girls cannot identify a welfare scheme
+          available to them.
+        </p>
+      </div>
+
+      <div class="impact-card">
+        <h3>0</h3>
+        <p>
+          structured civic literacy curricula exist
+          for underserved girls.
+        </p>
+      </div>
+
     </div>
 
   </section>
 
-  <section class="timeline">
+  <!-- TIMELINE -->
 
-    <h2>
-      Four Months. Four Sessions. One Playbook.
+  <section class="timeline-section" id="timeline">
+
+    <p class="section-label">
+      ROADMAP
+    </p>
+
+    <h2 class="center-heading">
+      Four months. Four sessions.
+      One playbook that outlasts us.
     </h2>
 
     <div class="timeline-grid">
 
-      <div class="card">
+      <div class="timeline-card">
+
+        <div class="timeline-number">01</div>
+
         <h3>Ground & Connect</h3>
+
         <span>August</span>
-        <p>Foundational network building.</p>
+
+        <p>
+          Partner with schools and build foundational
+          relationships with students.
+        </p>
+
       </div>
 
-      <div class="card">
-        <h3>Decode & Amplify</h3>
-        <span>September–October</span>
-        <p>Policy literacy and skill acquisition.</p>
+      <div class="timeline-card">
+
+        <div class="timeline-number">02</div>
+
+        <h3>Decode</h3>
+
+        <span>September</span>
+
+        <p>
+          Break down policy language into accessible,
+          understandable civic literacy.
+        </p>
+
       </div>
 
-      <div class="card">
+      <div class="timeline-card">
+
+        <div class="timeline-number">03</div>
+
+        <h3>Amplify</h3>
+
+        <span>October</span>
+
+        <p>
+          Teach petitions, public voice,
+          institutional participation,
+          and advocacy.
+        </p>
+
+      </div>
+
+      <div class="timeline-card">
+
+        <div class="timeline-number">04</div>
+
         <h3>Document & Release</h3>
+
         <span>November–December</span>
-        <p>Policy briefs and voice amplification.</p>
-      </div>
 
-      <div class="card">
-        <h3>Open-source Playbook</h3>
-        <span>Legacy</span>
-        <p>Replication toolkit for future cohorts.</p>
-      </div>
+        <p>
+          Publish the open-source Dastak Playbook
+          for replication across campuses.
+        </p>
 
-    </div>
-
-  </section>
-
-  <section class="impact">
-
-    <h2>
-      What we build will outlast the semester.
-    </h2>
-
-    <div class="impact-grid">
-
-      <div>
-        <h3>25–30</h3>
-        <p>Marginalised girls trained</p>
-      </div>
-
-      <div>
-        <h3>1</h3>
-        <p>Student-authored policy brief</p>
-      </div>
-
-      <div>
-        <h3>3+</h3>
-        <p>College networks receiving the playbook</p>
       </div>
 
     </div>
 
   </section>
 
-  <footer>
+  <!-- PLAYBOOK -->
 
-    <p>
-      Project Dastak is built on the belief that
-      voice is a form of education for every child.
+  <section class="playbook-section" id="playbook">
+
+    <div class="playbook-left">
+
+      <p class="section-label">
+        THE PLAYBOOK
+      </p>
+
+      <h2>
+        What we build should outlast the semester.
+      </h2>
+
+      <p class="playbook-text">
+        The Dastak Playbook is an open-source civic literacy toolkit
+        designed so that any student, anywhere,
+        can replicate meaningful policy education
+        for underserved communities.
+      </p>
+
+      <div class="module-list">
+
+        <div class="module">
+          <span>01</span>
+          <div>
+            <h4>What is Policy?</h4>
+            <p>Understanding governance in plain language.</p>
+          </div>
+        </div>
+
+        <div class="module">
+          <span>02</span>
+          <div>
+            <h4>How Laws Affect Daily Life</h4>
+            <p>Connecting institutions to lived realities.</p>
+          </div>
+        </div>
+
+        <div class="module">
+          <span>03</span>
+          <div>
+            <h4>Raising Your Voice</h4>
+            <p>Petitions, representation, and participation.</p>
+          </div>
+        </div>
+
+        <div class="module">
+          <span>04</span>
+          <div>
+            <h4>Writing Policy Briefs</h4>
+            <p>Students co-authoring civic demands.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="playbook-preview">
+
+      <h3>
+        Included Inside
+      </h3>
+
+      <ul>
+
+        <li>✓ Workshop Facilitation Guides</li>
+        <li>✓ Simplified Policy Documents</li>
+        <li>✓ Petition Templates</li>
+        <li>✓ Civic Participation Exercises</li>
+        <li>✓ Replication Framework</li>
+
+      </ul>
+
+    </div>
+
+  </section>
+
+  <!-- FOUNDER -->
+
+  <section class="founder-section" id="founder">
+
+    <div class="founder-content">
+
+      <p class="section-label">
+        FOUNDER
+      </p>
+
+      <h2>
+        Voice is a form of education.
+      </h2>
+
+      <p>
+        Project Dastak was founded by Nandini Puri,
+        a student of Mathematics and Economics
+        at Lady Shri Ram College for Women,
+        University of Delhi.
+      </p>
+
+      <p>
+        The project emerges from a simple belief:
+        civic literacy should not remain restricted
+        to privileged spaces.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section class="contact-section" id="contact">
+
+    <p class="section-label">
+      GET INVOLVED
     </p>
 
-    <small>
-      Founder: Nandini Puri
-    </small>
+    <h2>
+      Bring civic literacy to every girl
+      excluded from power.
+    </h2>
 
-  </footer>
+    <a href="mailto:your@email.com" class="contact-btn">
+      Contact Project Dastak
+    </a>
+
+  </section>
 
 </body>
+
 </html>
