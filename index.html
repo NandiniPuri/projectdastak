@@ -15,19 +15,12 @@ html { scroll-behavior: smooth; font-size: 16px; }
 
 /* ─── TOKENS ─────────────────────────────────────────────────── */
 :root {
-  --saffron:    #D4621A;
-  --saffron-lt: #F5E6DA;
-  --saffron-md: #EAC4A8;
-  --clay:       #B84A12;
-  --earth:      #3D2B1F;
-  --ink:        #1C1209;
-  --fog:        #6B5B4E;
-  --sand:       #F7F1E8;
-  --cream:      #FBF7F2;
-  --white:      #FFFFFF;
-  --teal:       #1A6B5A;
-  --teal-lt:    #E0F0EB;
-  --border:     #E8DDD0;
+    --primary:    #f19a3e; /* Warm Orange */
+    --secondary:  #567568; /* Humane Green */
+    --dark:       #403233; /* Dark Brown (Professional Text/BG) */
+    --light:      #f5f5f5; /* Light Neutral BG */
+    --white:      #ffffff;
+    --border:     rgba(64, 50, 51, 0.1); /* Subtle brown border */
   
   --serif:   'Lora',Georgia,serif;
   --display: 'Playfair Display',Georgia,serif;
@@ -44,9 +37,9 @@ html { scroll-behavior: smooth; font-size: 16px; }
 }
 
 body {
-  font-family: var(--sans);
-  background: var(--cream);
-  color: var(--ink);
+    font-family: var(--sans);
+    background: var(--light); /* Sets the humane light-grey base */
+    color: var(--dark);      /* Dark brown text for classiness and readability */
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
@@ -66,7 +59,7 @@ body {
 /* ─── NAV ─────────────────────────────────────────────────────── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  background: rgba(251,247,242,0.94);
+    background: rgba(245, 245, 245, 0.94);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
   transition: box-shadow 0.3s;
@@ -81,7 +74,7 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(28,18,9,0.08); }
   font-family: var(--serif);
   font-size: 1.4rem;
   font-weight: 700;
-  color: var(--ink);
+  color: var(--primary);
   text-decoration: none;
   letter-spacing: -0.01em;
 }
@@ -108,13 +101,13 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(28,18,9,0.08); }
 .nav-links a:hover { color: var(--saffron); }
 .nav-cta {
   font-size: 0.82rem; font-weight: 500;
-  background: var(--saffron);
+  background: var(--primary);
   color: var(--white) !important;
   padding: 0.5rem 1.25rem;
   border-radius: 100px;
   transition: background 0.2s, transform 0.2s !important;
 }
-.nav-cta:hover { background: var(--clay) !important; transform: translateY(-1px); }
+.nav-cta:hover { background: var(--secondary) !important; transform: translateY(-1px); }
 
 .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
 .hamburger span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: 0.3s; }
@@ -132,8 +125,8 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(28,18,9,0.08); }
 .hero-bg {
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(212,98,26,0.07) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 20% 80%, rgba(212,98,26,0.05) 0%, transparent 50%);
+radial-gradient(ellipse 80% 60% at 70% 40%, rgba(241, 154, 62, 0.08) 0%, transparent 60%);   
+  radial-gradient(ellipse 50% 40% at 20% 80%, rgba(212,98,26,0.05) 0%, transparent 50%);
 }
 
 /* Subtle hand-drawn circle behind the Hindi text */
@@ -186,7 +179,7 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(28,18,9,0.08); }
 }
 .hero h1 em {
   font-style: italic;
-  color: var(--saffron);
+  color: var(--primary);
   font-family: var(--display);
 }
 
@@ -206,7 +199,7 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(28,18,9,0.08); }
 }
 .btn-primary {
   display: inline-flex; align-items: center; gap: 0.4rem;
-  background: var(--saffron);
+  background: var(--primary);
   color: var(--white);
   font-size: 0.9rem; font-weight: 500;
   padding: 0.8rem 1.75rem;
@@ -251,7 +244,7 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(28,18,9,0.08); }
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--saffron), var(--clay));
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
 }
 .hindi-big {
   font-size: clamp(4rem, 8vw, 6.5rem);
@@ -264,7 +257,7 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(28,18,9,0.08); }
 }
 .hindi-devanagari {
   font-size: 1.5rem;
-  color: var(--saffron);
+  color: var(--primary);
   display: block;
   margin-bottom: 0.75rem;
   letter-spacing: 0.02em;
@@ -289,8 +282,8 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(28,18,9,0.08); }
   background: var(--white);
   white-space: nowrap;
 }
-.pill.accent { background: var(--saffron-lt); color: var(--clay); border-color: var(--saffron-md); }
-.pill.teal { background: var(--teal-lt); color: var(--teal); border-color: #b2d9cf; }
+.pill.accent { background: rgba(241, 154, 62, 0.1); color: #b06510; border-color: var(--primary);  }
+.pill.teal { background: rgba(86, 117, 104, 0.1); color: var(--secondary); border-color: var(--secondary);}
 
 /* Hero scroll indicator */
 .hero-scroll {
