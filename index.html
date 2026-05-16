@@ -302,7 +302,7 @@ radial-gradient(ellipse 80% 60% at 70% 40%, rgba(241, 154, 62, 0.08) 0%, transpa
 
 /* ─── MARQUEE ─────────────────────────────────────────────────── */
 .marquee-wrap {
-  background: var(--earth);
+  background: var(--primary);
   padding: 0.85rem 0;
   overflow: hidden;
 }
@@ -319,7 +319,7 @@ radial-gradient(ellipse 80% 60% at 70% 40%, rgba(241, 154, 62, 0.08) 0%, transpa
   padding: 0 2.5rem;
   flex-shrink: 0;
 }
-.marquee-track span.dot { color: var(--saffron); padding: 0; }
+.marquee-track span.dot { color: var(--primary); padding: 0; }
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
@@ -348,7 +348,7 @@ section { padding: clamp(4rem, 8vw, 7rem) 0; }
 }
 
 /* ─── ORIGIN STORY ─────────────────────────────────────────────── */
-.origin { background: var(--sand); }
+.origin { background: var(--white); }
 .origin-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -444,7 +444,7 @@ section { padding: clamp(4rem, 8vw, 7rem) 0; }
 .cred-text strong { color: var(--earth); font-weight: 500; }
 
 /* ─── THE PROBLEM ─────────────────────────────────────────────── */
-.problem { background: var(--earth); }
+.problem { background: var(--primary); }
 .problem .label { color: var(--saffron-md); }
 .problem .section-head h2 { color: var(--white); }
 .problem .section-head p { color: rgba(255,255,255,0.55); }
@@ -455,7 +455,7 @@ section { padding: clamp(4rem, 8vw, 7rem) 0; }
   gap: 1.25rem;
 }
 .problem-card {
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 14px;
   padding: 1.75rem;
@@ -464,14 +464,14 @@ section { padding: clamp(4rem, 8vw, 7rem) 0; }
 .problem-card:hover { background: rgba(255,255,255,0.08); }
 .problem-card.wide { grid-column: 1 / -1; }
 .problem-card.accent-card {
-  background: var(--saffron);
-  border-color: var(--saffron);
+  background: var(--primary);
+  border-color: var(--primary);
 }
 .p-stat {
   font-family: var(--serif);
   font-size: 2.4rem;
   font-weight: 700;
-  color: var(--saffron);
+  color: var(--primary);
   display: block;
   margin-bottom: 0.5rem;
   line-height: 1;
@@ -485,7 +485,7 @@ section { padding: clamp(4rem, 8vw, 7rem) 0; }
 .problem-card.accent-card .p-label { color: rgba(255,255,255,0.85); }
 
 /* ─── HOW IT WORKS ─────────────────────────────────────────────── */
-.how { background: var(--cream); }
+.how { background: var(--white); }
 
 .timeline {
   position: relative;
@@ -518,7 +518,7 @@ section { padding: clamp(4rem, 8vw, 7rem) 0; }
   font-family: var(--serif);
   font-size: 1rem;
   font-weight: 700;
-  color: var(--saffron);
+  color: var(--primary);
   flex-shrink: 0;
   z-index: 1;
   transition: border-color 0.3s, background 0.3s;
@@ -526,14 +526,14 @@ section { padding: clamp(4rem, 8vw, 7rem) 0; }
   top: 0;
 }
 .tl-item:hover .tl-dot {
-  border-color: var(--saffron);
-  background: var(--saffron-lt);
+  border-color: var(--primary);
+  background: rgba(241, 154, 62, 0.05);
 }
 .tl-content { padding-top: 0.75rem; }
 .tl-month {
   font-size: 0.7rem; font-weight: 500;
   letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--saffron);
+  color: var(--primary);
   margin-bottom: 0.4rem;
 }
 .tl-title {
@@ -551,7 +551,7 @@ section { padding: clamp(4rem, 8vw, 7rem) 0; }
 }
 
 /* ─── PLAYBOOK ─────────────────────────────────────────────────── */
-.playbook { background: var(--sand); }
+.playbook { background: var(--white); }
 
 .playbook-inner {
   display: grid;
@@ -573,7 +573,7 @@ section { padding: clamp(4rem, 8vw, 7rem) 0; }
   box-shadow: 6px 6px 0 var(--saffron-md), 12px 12px 0 var(--border);
 }
 .book-spine {
-  background: linear-gradient(180deg, var(--saffron), var(--clay));
+  background: linear-gradient(180deg, var(--primary), var(--secondary));
   height: 6px;
 }
 .book-cover {
@@ -605,14 +605,14 @@ section { padding: clamp(4rem, 8vw, 7rem) 0; }
   cursor: default;
 }
 .book-module:last-child { border-bottom: none; }
-.book-module:hover { background: var(--saffron-lt); }
+.book-module:hover { background: rgba(241, 154, 62, 0.05); }
 .mod-num {
   width: 28px; height: 28px;
   border-radius: 6px;
-  background: var(--saffron-lt);
+  background: rgba(241, 154, 62, 0.1);
   display: flex; align-items: center; justify-content: center;
   font-size: 0.78rem; font-weight: 700;
-  color: var(--saffron);
+  color: var(--primary);
   flex-shrink: 0;
 }
 .mod-title {
@@ -639,7 +639,7 @@ section { padding: clamp(4rem, 8vw, 7rem) 0; }
 }
 
 /* ─── SDG SECTION ─────────────────────────────────────────────── */
-.sdgs { background: var(--cream); }
+.sdgs { background: var(--white); }
 
 .sdg-grid {
   display: grid;
@@ -706,7 +706,7 @@ section { padding: clamp(4rem, 8vw, 7rem) 0; }
 }
 
 /* ─── VISION ─────────────────────────────────────────────────── */
-.vision { background: var(--sand); }
+.vision { background: var(--light); }
 .vision-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -771,7 +771,7 @@ section { padding: clamp(4rem, 8vw, 7rem) 0; }
 }
 
 /* ─── CONTACT ─────────────────────────────────────────────────── */
-.contact { background: var(--earth); }
+.contact { background: var(--primary); }
 .contact .label { color: var(--saffron-md); }
 .contact-inner {
   display: grid;
@@ -807,7 +807,7 @@ section { padding: clamp(4rem, 8vw, 7rem) 0; }
 .contact-link:hover { background: rgba(255,255,255,0.1); border-color: rgba(212,98,26,0.5); }
 .contact-link-icon {
   width: 36px; height: 36px; border-radius: 8px;
-  background: var(--saffron);
+  background: var(--primary);
   display: flex; align-items: center; justify-content: center;
   font-size: 0.9rem;
   flex-shrink: 0;
@@ -836,7 +836,7 @@ section { padding: clamp(4rem, 8vw, 7rem) 0; }
 .collab-item:last-child { border-bottom: none; }
 .collab-bullet {
   width: 6px; height: 6px; border-radius: 50%;
-  background: var(--saffron);
+  background: var(--primary);
   flex-shrink: 0; margin-top: 6px;
 }
 .collab-text {
@@ -849,7 +849,7 @@ section { padding: clamp(4rem, 8vw, 7rem) 0; }
 
 /* ─── FOOTER ─────────────────────────────────────────────────── */
 footer {
-  background: var(--ink);
+  background: var(--primary);
   padding: 2rem var(--side);
   display: flex;
   align-items: center;
