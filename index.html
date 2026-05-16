@@ -1,200 +1,1467 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dastak: Empowering Girls through Civic Literacy</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        /* ─── NEW COLOUR TOKENS ─────────────────────────────────────── */
-        :root {
-            --primary-blue: #1A5E9A;
-            --vibrant-orange: #E67E22;
-            --success-green: #27AE60;
-            --clean-white: #FFFFFF;
-            --soft-gray: #F4F7F6;
-            --dark-text: #2C3E50;
-            --border-light: #DCDDE1;
-            --sans: 'DM Sans', sans-serif;
-            --serif: 'Lora', serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dastak — Because every girl deserves to knock</title>
+<meta name="description" content="Dastak is a civic literacy initiative teaching girls from underfunded schools in Delhi to read, question, and engage with the policies that shape their lives.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
 
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: var(--sans); background: var(--clean-white); color: var(--dark-text); line-height: 1.6; }
-        .wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-        section { padding: 5rem 0; }
-        h1, h2, h3 { font-family: var(--serif); color: var(--primary-blue); }
+<style>
+/* ─── RESET ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
 
-        /* ─── NAVIGATION ────────────────────────────────────────────── */
-        nav { background: var(--clean-white); border-bottom: 2px solid var(--primary-blue); padding: 1rem 0; position: sticky; top: 0; z-index: 100; }
-        .nav-inner { display: flex; justify-content: space-between; align-items: center; }
-        .nav-links { list-style: none; display: flex; gap: 2rem; }
-        .nav-links a { text-decoration: none; color: var(--dark-text); font-weight: 500; }
-        .nav-links a:hover { color: var(--vibrant-orange); }
+/* ─── TOKENS ─────────────────────────────────────────────────── */
+:root {
+  --saffron:    #D4621A;
+  --saffron-lt: #F5E6DA;
+  --saffron-md: #EAC4A8;
+  --clay:       #B84A12;
+  --earth:      #3D2B1F;
+  --ink:        #1C1209;
+  --fog:        #6B5B4E;
+  --sand:       #F7F1E8;
+  --cream:      #FBF7F2;
+  --white:      #FFFFFF;
+  --teal:       #1A6B5A;
+  --teal-lt:    #E0F0EB;
+  --border:     #E8DDD0;
 
-        /* ─── HERO SECTION ─────────────────────────────────────────── */
-        .hero { background: linear-gradient(135deg, var(--soft-gray) 0%, #e0eafc 100%); padding: 6rem 0; display: flex; align-items: center; }
-        .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 3rem; align-items: center; }
-        .hero h1 { font-size: 3.5rem; margin-bottom: 1.5rem; line-height: 1.1; }
-        .hero h1 em { color: var(--vibrant-orange); font-style: normal; }
-        .btn-main { background: var(--vibrant-orange); color: white; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 1rem; }
+  --serif:  'Lora', Georgia, serif;
+  --display:'Playfair Display', Georgia, serif;
+  --sans:   'DM Sans', system-ui, sans-serif;
 
-        /* ─── STATS SECTION (MOVED UP) ─────────────────────────────── */
-        .stats-section { background: var(--primary-blue); color: white; text-align: center; }
-        .stats-grid { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem; margin-top: 3rem; }
-        .stat-item { flex: 1; min-width: 200px; }
-        .stat-circle { width: 120px; height: 120px; border: 4px solid var(--vibrant-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.8rem; font-weight: bold; font-family: var(--serif); }
+  --max: 1160px;
+  --side: clamp(1.5rem, 5vw, 5rem);
+}
 
-        /* ─── ORIGIN STORY (FOUNDER BOX REMOVED) ───────────────────── */
-        .story-section { background: var(--clean-white); }
-        .story-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-        .story-image { width: 100%; border-radius: 20px; box-shadow: 20px 20px 0 var(--success-green); }
+body {
+  font-family: var(--sans);
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
 
-        /* ─── TIMELINE ─────────────────────────────────────────────── */
-        .timeline { position: relative; max-width: 800px; margin: 4rem auto 0; padding-left: 2rem; border-left: 4px solid var(--success-green); }
-        .timeline-item { margin-bottom: 3rem; position: relative; }
-        .timeline-item::before { content: ''; position: absolute; left: -2.6rem; top: 0; width: 20px; height: 20px; background: var(--vibrant-orange); border-radius: 50%; }
-        .timeline-title { color: var(--success-green); font-weight: bold; text-transform: uppercase; margin-bottom: 0.5rem; }
+/* ─── UTILITY ─────────────────────────────────────────────────── */
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--side); }
+.label {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--saffron);
+}
+.serif { font-family: var(--serif); }
 
-        /* ─── PLAYBOOK (VISUAL STYLE) ─────────────────────────────── */
-        .playbook-preview { background: var(--soft-gray); border-radius: 30px; padding: 4rem; text-align: center; }
-        .preview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem; }
-        .preview-page { background: white; padding: 2rem; border: 1px solid var(--border-light); border-top: 10px solid var(--primary-blue); transition: transform 0.3s; }
-        .preview-page:hover { transform: translateY(-10px); }
+/* ─── NAV ─────────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(251,247,242,0.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow 0.3s;
+}
+nav.scrolled { box-shadow: 0 2px 24px rgba(28,18,9,0.08); }
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+  max-width: var(--max); margin: 0 auto; padding: 0 var(--side);
+}
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+.nav-logo span { color: var(--saffron); }
+.nav-logo sub {
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--fog);
+  vertical-align: super;
+  text-transform: uppercase;
+  margin-left: 4px;
+}
+.nav-links {
+  display: flex; align-items: center; gap: 2rem; list-style: none;
+}
+.nav-links a {
+  font-size: 0.875rem; font-weight: 400;
+  color: var(--fog);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--saffron); }
+.nav-cta {
+  font-size: 0.82rem; font-weight: 500;
+  background: var(--saffron);
+  color: var(--white) !important;
+  padding: 0.5rem 1.25rem;
+  border-radius: 100px;
+  transition: background 0.2s, transform 0.2s !important;
+}
+.nav-cta:hover { background: var(--clay) !important; transform: translateY(-1px); }
 
-        /* ─── CONTACT (REDUCED BOXES) ──────────────────────────────── */
-        .contact-footer { background: var(--dark-text); color: white; padding: 4rem 0; text-align: center; }
-        .contact-links { display: flex; justify-content: center; gap: 3rem; margin-top: 2rem; }
-        .contact-links a { color: var(--vibrant-orange); text-decoration: none; font-size: 1.2rem; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: 0.3s; }
 
-        @media (max-width: 768px) {
-            .hero-grid, .story-content { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.5rem; }
-        }
-    </style>
+/* ─── HERO ─────────────────────────────────────────────────────── */
+.hero {
+  padding-top: 64px;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(212,98,26,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 20% 80%, rgba(212,98,26,0.05) 0%, transparent 50%);
+}
+
+/* Subtle hand-drawn circle behind the Hindi text */
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  top: 12%; right: 6%;
+  width: clamp(180px, 22vw, 320px);
+  height: clamp(180px, 22vw, 320px);
+  border: 2px solid rgba(212,98,26,0.12);
+  border-radius: 48% 52% 55% 45% / 44% 50% 50% 56%;
+  animation: morphBorder 8s ease-in-out infinite;
+}
+@keyframes morphBorder {
+  0%, 100% { border-radius: 48% 52% 55% 45% / 44% 50% 50% 56%; }
+  50%       { border-radius: 55% 45% 48% 52% / 50% 44% 56% 50%; }
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 4rem;
+  padding: 6rem var(--side) 4rem;
+  max-width: var(--max); margin: 0 auto; width: 100%;
+}
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  margin-bottom: 1.75rem;
+}
+.eyebrow-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--saffron);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.7); }
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--saffron);
+  font-family: var(--display);
+}
+
+.hero-sub {
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--fog);
+  font-weight: 300;
+  max-width: 480px;
+  margin-bottom: 2.5rem;
+}
+
+.hero-actions {
+  display: flex; align-items: center;
+  gap: 1.25rem; flex-wrap: wrap;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: var(--saffron);
+  color: var(--white);
+  font-size: 0.9rem; font-weight: 500;
+  padding: 0.8rem 1.75rem;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.btn-primary:hover {
+  background: var(--clay);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(212,98,26,0.3);
+}
+.btn-text {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  font-size: 0.9rem; font-weight: 400;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.btn-text:hover { color: var(--saffron); border-color: var(--saffron); }
+
+/* Hero visual — the Hindi stamp card */
+.hero-visual {
+  display: flex; flex-direction: column; gap: 1rem;
+  position: relative;
+}
+
+.hindi-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  box-shadow: 0 4px 40px rgba(28,18,9,0.06), 0 1px 0 rgba(255,255,255,0.8) inset;
+  position: relative;
+  overflow: hidden;
+}
+.hindi-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--saffron), var(--clay));
+}
+.hindi-big {
+  font-size: clamp(4rem, 8vw, 6.5rem);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-family: 'Lora', serif;
+}
+.hindi-devanagari {
+  font-size: 1.5rem;
+  color: var(--saffron);
+  display: block;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.02em;
+}
+.hindi-meaning {
+  font-size: 0.82rem;
+  color: var(--fog);
+  font-style: italic;
+  font-family: var(--serif);
+  line-height: 1.6;
+}
+
+.info-pills {
+  display: flex; gap: 0.6rem; flex-wrap: wrap;
+}
+.pill {
+  font-size: 0.75rem; font-weight: 500;
+  padding: 0.35rem 0.85rem;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  color: var(--fog);
+  background: var(--white);
+  white-space: nowrap;
+}
+.pill.accent { background: var(--saffron-lt); color: var(--clay); border-color: var(--saffron-md); }
+.pill.teal { background: var(--teal-lt); color: var(--teal); border-color: #b2d9cf; }
+
+/* Hero scroll indicator */
+.hero-scroll {
+  display: flex; align-items: center; justify-content: center;
+  padding: 2rem 0 2.5rem;
+  gap: 0.5rem;
+}
+.scroll-line {
+  width: 40px; height: 1px;
+  background: var(--border);
+}
+.scroll-text {
+  font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--fog);
+}
+
+/* ─── MARQUEE ─────────────────────────────────────────────────── */
+.marquee-wrap {
+  background: var(--earth);
+  padding: 0.85rem 0;
+  overflow: hidden;
+}
+.marquee-track {
+  display: flex; gap: 0;
+  animation: marquee 28s linear infinite;
+  white-space: nowrap;
+}
+.marquee-track span {
+  font-size: 0.78rem; font-weight: 500;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0 2.5rem;
+  flex-shrink: 0;
+}
+.marquee-track span.dot { color: var(--saffron); padding: 0; }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ─── SECTION BASE ─────────────────────────────────────────────── */
+section { padding: clamp(4rem, 8vw, 7rem) 0; }
+.section-head { margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.section-head h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-top: 0.6rem;
+  color: var(--ink);
+}
+.section-head h2 em { color: var(--saffron); font-style: italic; font-family: var(--display); }
+.section-head p {
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--fog);
+  font-weight: 300;
+  max-width: 600px;
+}
+
+/* ─── ORIGIN STORY ─────────────────────────────────────────────── */
+.origin { background: var(--sand); }
+.origin-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.pull-quote {
+  position: relative;
+  padding: 2rem 2rem 2rem 2.5rem;
+  border-left: 3px solid var(--saffron);
+  margin: 2rem 0;
+  background: var(--white);
+  border-radius: 0 12px 12px 0;
+}
+.pull-quote p {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  font-style: italic;
+  color: var(--earth);
+}
+.pull-quote cite {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  font-style: normal;
+  color: var(--fog);
+  letter-spacing: 0.04em;
+}
+
+.body-text p {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--fog);
+  font-weight: 300;
+  margin-bottom: 1.25rem;
+}
+.body-text p strong { color: var(--earth); font-weight: 500; }
+
+.founder-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.founder-top {
+  background: var(--earth);
+  padding: 2rem;
+  text-align: center;
+}
+.founder-avatar {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--saffron), var(--clay));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--white);
+  margin: 0 auto 1rem;
+  border: 3px solid rgba(255,255,255,0.2);
+}
+.founder-name {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--white);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.founder-role {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.55);
+  display: block;
+}
+.founder-body { padding: 1.5rem 2rem; }
+.cred-item {
+  display: flex; align-items: flex-start; gap: 0.75rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.cred-item:last-child { border-bottom: none; }
+.cred-icon {
+  width: 28px; height: 28px; border-radius: 6px;
+  background: var(--saffron-lt);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.cred-text { font-size: 0.85rem; color: var(--fog); line-height: 1.5; }
+.cred-text strong { color: var(--earth); font-weight: 500; }
+
+/* ─── THE PROBLEM ─────────────────────────────────────────────── */
+.problem { background: var(--earth); }
+.problem .label { color: var(--saffron-md); }
+.problem .section-head h2 { color: var(--white); }
+.problem .section-head p { color: rgba(255,255,255,0.55); }
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+.problem-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  padding: 1.75rem;
+  transition: background 0.3s;
+}
+.problem-card:hover { background: rgba(255,255,255,0.08); }
+.problem-card.wide { grid-column: 1 / -1; }
+.problem-card.accent-card {
+  background: var(--saffron);
+  border-color: var(--saffron);
+}
+.p-stat {
+  font-family: var(--serif);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--saffron);
+  display: block;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+.problem-card.accent-card .p-stat { color: var(--white); }
+.p-label {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.5;
+}
+.problem-card.accent-card .p-label { color: rgba(255,255,255,0.85); }
+
+/* ─── HOW IT WORKS ─────────────────────────────────────────────── */
+.how { background: var(--cream); }
+
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 2rem;
+  top: 2.5rem; bottom: 2.5rem;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--saffron), var(--border));
+}
+
+.tl-item {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: 2rem;
+  padding: 2rem 0;
+  position: relative;
+}
+.tl-dot {
+  width: 4rem; height: 4rem;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--saffron);
+  flex-shrink: 0;
+  z-index: 1;
+  transition: border-color 0.3s, background 0.3s;
+  position: relative;
+  top: 0;
+}
+.tl-item:hover .tl-dot {
+  border-color: var(--saffron);
+  background: var(--saffron-lt);
+}
+.tl-content { padding-top: 0.75rem; }
+.tl-month {
+  font-size: 0.7rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--saffron);
+  margin-bottom: 0.4rem;
+}
+.tl-title {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+}
+.tl-desc {
+  font-size: 0.92rem;
+  color: var(--fog);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ─── PLAYBOOK ─────────────────────────────────────────────────── */
+.playbook { background: var(--sand); }
+
+.playbook-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+/* Playbook "book" visual */
+.book-visual {
+  position: sticky;
+  top: 5rem;
+}
+.book {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 6px 6px 0 var(--saffron-md), 12px 12px 0 var(--border);
+}
+.book-spine {
+  background: linear-gradient(180deg, var(--saffron), var(--clay));
+  height: 6px;
+}
+.book-cover {
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  background: var(--cream);
+}
+.book-icon { font-size: 3rem; display: block; margin-bottom: 1rem; }
+.book-title {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.book-sub {
+  font-size: 0.8rem;
+  color: var(--fog);
+  font-style: italic;
+}
+.book-modules { padding: 0; }
+.book-module {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+  cursor: default;
+}
+.book-module:last-child { border-bottom: none; }
+.book-module:hover { background: var(--saffron-lt); }
+.mod-num {
+  width: 28px; height: 28px;
+  border-radius: 6px;
+  background: var(--saffron-lt);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.78rem; font-weight: 700;
+  color: var(--saffron);
+  flex-shrink: 0;
+}
+.mod-title {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--earth);
+}
+.mod-tag {
+  margin-left: auto;
+  font-size: 0.68rem;
+  color: var(--fog);
+  white-space: nowrap;
+}
+
+.playbook-text .body-text p { margin-bottom: 1.25rem; }
+.coming-soon {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--teal-lt);
+  color: var(--teal);
+  font-size: 0.78rem; font-weight: 500;
+  padding: 0.4rem 1rem;
+  border-radius: 100px;
+  margin-top: 1.5rem;
+}
+
+/* ─── SDG SECTION ─────────────────────────────────────────────── */
+.sdgs { background: var(--cream); }
+
+.sdg-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+.sdg-card {
+  border-radius: 14px;
+  padding: 1.5rem 1.25rem;
+  transition: transform 0.2s;
+}
+.sdg-card:hover { transform: translateY(-4px); }
+.sdg-num {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.sdg-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.sdg-desc { font-size: 0.78rem; line-height: 1.5; opacity: 0.8; }
+
+.sdg-card.s4  { background: #1A5276; color: #fff; }
+.sdg-card.s5  { background: #C0392B; color: #fff; }
+.sdg-card.s10 { background: #6C3483; color: #fff; }
+.sdg-card.s16 { background: #1A5276; color: #fff; }
+.sdg-card.s5  { background: var(--saffron); }
+
+.unai-box {
+  margin-top: 2.5rem;
+  background: var(--earth);
+  border-radius: 14px;
+  padding: 2rem 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.unai-label {
+  font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.unai-principle {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--white);
+}
+.unai-desc {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+  font-weight: 300;
+  flex: 1;
+  min-width: 200px;
+}
+
+/* ─── VISION ─────────────────────────────────────────────────── */
+.vision { background: var(--sand); }
+.vision-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+.vision-quote {
+  position: relative;
+}
+.big-quote {
+  font-family: var(--display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-style: italic;
+  line-height: 1.3;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+.big-quote em { color: var(--saffron); }
+.vision-byline {
+  font-size: 0.82rem;
+  color: var(--fog);
+  letter-spacing: 0.04em;
+}
+.vision-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.vision-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.vision-card:hover {
+  border-color: var(--saffron-md);
+  box-shadow: 0 4px 20px rgba(212,98,26,0.08);
+}
+.vision-icon {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  background: var(--saffron-lt);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.vision-card-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--earth);
+  margin-bottom: 0.3rem;
+}
+.vision-card-desc {
+  font-size: 0.83rem;
+  color: var(--fog);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* ─── CONTACT ─────────────────────────────────────────────────── */
+.contact { background: var(--earth); }
+.contact .label { color: var(--saffron-md); }
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.contact h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+  margin: 0.6rem 0 1.25rem;
+}
+.contact p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.55);
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+.contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+.contact-link {
+  display: flex; align-items: center; gap: 0.75rem;
+  text-decoration: none;
+  padding: 1rem 1.25rem;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  transition: background 0.2s, border-color 0.2s;
+}
+.contact-link:hover { background: rgba(255,255,255,0.1); border-color: rgba(212,98,26,0.5); }
+.contact-link-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: var(--saffron);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+.contact-link-text { font-size: 0.9rem; color: rgba(255,255,255,0.8); }
+.contact-link-label { font-size: 0.72rem; color: rgba(255,255,255,0.35); display: block; }
+
+.collab-box {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  padding: 2rem;
+}
+.collab-box h3 {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+.collab-item {
+  display: flex; align-items: flex-start; gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.collab-item:last-child { border-bottom: none; }
+.collab-bullet {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--saffron);
+  flex-shrink: 0; margin-top: 6px;
+}
+.collab-text {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+  font-weight: 300;
+}
+.collab-text strong { color: rgba(255,255,255,0.8); font-weight: 500; }
+
+/* ─── FOOTER ─────────────────────────────────────────────────── */
+footer {
+  background: var(--ink);
+  padding: 2rem var(--side);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-logo {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+}
+.footer-logo span { color: var(--saffron); }
+.footer-text {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.3);
+  text-align: center;
+}
+.footer-sdg {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.25);
+}
+
+/* ─── ANIMATIONS ─────────────────────────────────────────────── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-up:nth-child(2) { transition-delay: 0.1s; }
+.fade-up:nth-child(3) { transition-delay: 0.2s; }
+.fade-up:nth-child(4) { transition-delay: 0.3s; }
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex; flex-direction: column;
+    position: fixed; top: 64px; left: 0; right: 0;
+    background: var(--cream);
+    padding: 1.5rem var(--side) 2rem;
+    gap: 1.25rem;
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 8px 30px rgba(28,18,9,0.1);
+  }
+  .hamburger { display: flex; }
+  .hero-inner { grid-template-columns: 1fr; padding-top: 3.5rem; padding-bottom: 2rem; }
+  .hero-visual { order: -1; }
+  .hindi-big { font-size: 4rem; }
+  .origin-inner,
+  .playbook-inner,
+  .vision-inner,
+  .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .book-visual { position: static; }
+  .problem-grid { grid-template-columns: 1fr; }
+  .problem-card.wide { grid-column: auto; }
+  .sdg-grid { grid-template-columns: 1fr 1fr; }
+  .timeline::before { left: 1.5rem; }
+}
+@media (max-width: 480px) {
+  .sdg-grid { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+}
+</style>
 </head>
 <body>
 
-<nav>
-    <div class="wrap nav-inner">
-        <h2 style="color: var(--primary-blue);">Dastak<span>.</span></h2>
-        <ul class="nav-links">
-            <li><a href="#stats">The Problem</a></li>
-            <li><a href="#story">Our Story</a></li>
-            <li><a href="#how">Timeline</a></li>
-            <li><a href="#playbook">Playbook</a></li>
-        </ul>
+<!-- ═══ NAV ═════════════════════════════════════════════════════ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Dastak<span>.</span><sub>दस्तक</sub></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#origin">Our Story</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#playbook">The Playbook</a></li>
+      <li><a href="#vision">Vision</a></li>
+      <li><a href="#contact" class="nav-cta">Get Involved</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
     </div>
+  </div>
 </nav>
 
-<section class="hero">
-    <div class="wrap hero-grid">
-        <div class="hero-text">
-            <h1>Because every girl deserves to <em>knock.</em></h1>
-            <p>Dastak is a civic literacy initiative giving the language of policy into the hands of girls in Delhi who were never told the door was theirs to open.</p>
-            <a href="#playbook" class="btn-main">Explore the Playbook</a>
-        </div>
-        <div class="hero-image">
-            <!-- Replace URL with an actual photo of girls studying -->
-            <img src="https://images.unsplash.com/flagged/photo-1574097656146-0b43b7660cb6?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="credits: jaikishan patel/unsplash" style="width: 100%; border-radius: 30px; border: 8px solid white; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
-        </div>
+<!-- ═══ HERO ═════════════════════════════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-inner wrap">
+    <div class="hero-text">
+      <div class="hero-eyebrow">
+        <div class="eyebrow-dot"></div>
+        <span class="label">Millennium Fellowship · Class of 2026</span>
+      </div>
+      <h1>
+        Because every girl deserves to <em>knock.</em>
+      </h1>
+      <p class="hero-sub">
+        Dastak is a civic literacy initiative taking the language of policy — dense, inaccessible, deliberately complex — and putting it in the hands of children from underfunded schools in Delhi. Especially girls who were never told the door was theirs to open.
+      </p>
+      <div class="hero-actions">
+        <a href="#how" class="btn-primary">See How It Works →</a>
+        <a href="#playbook" class="btn-text">The Playbook ↓</a>
+      </div>
     </div>
+
+    <div class="hero-visual">
+      <div class="hindi-card">
+        <span class="hindi-big">दस्तक</span>
+        <span class="hindi-devanagari">Dastak</span>
+        <span class="hindi-meaning">
+          /dəs.tək/ · noun · Hindi<br>
+          <em>A knock on the door.</em><br>
+          The sound of someone who was always outside<br>finally asking to come in.
+        </span>
+      </div>
+      <div class="info-pills">
+        <span class="pill accent">South Delhi</span>
+        <span class="pill accent">Girls aged 13–17</span>
+        <span class="pill teal">SDG 4 · 5 · 10 · 16</span>
+        <span class="pill">Aug–Dec 2026</span>
+        <span class="pill">Open Source</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span class="scroll-text">Scroll to explore</span>
+    <div class="scroll-line"></div>
+  </div>
 </section>
 
-<section id="stats" class="stats-section">
-    <div class="wrap">
-        <h2>Why Dastak Matters</h2>
-        <p style="opacity: 0.8;">Policy shapes every girl's life, yet no one teaches her to read it.</p>
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-circle">49%</div>
-                <p>Of Indian women have never participated in civic engagement.</p>
-            </div>
-            <div class="stat-item">
-                <div class="stat-circle">1 in 3</div>
-                <p>Girls cannot identify a single government welfare scheme.</p>
-            </div>
-            <div class="stat-item">
-                <div class="stat-circle">SDG 5</div>
-                <p>Ensuring full participation in political and public life.</p>
-            </div>
+<!-- ═══ MARQUEE ══════════════════════════════════════════════════ -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Civic Literacy</span><span class="dot">◆</span>
+    <span>Girl Child Education</span><span class="dot">◆</span>
+    <span>Policy for Everyone</span><span class="dot">◆</span>
+    <span>दस्तक</span><span class="dot">◆</span>
+    <span>Underfunded Schools · Delhi</span><span class="dot">◆</span>
+    <span>SDG 5 · Gender Equality</span><span class="dot">◆</span>
+    <span>Open Source Playbook</span><span class="dot">◆</span>
+    <span>Lady Shri Ram College</span><span class="dot">◆</span>
+    <span>Civic Literacy</span><span class="dot">◆</span>
+    <span>Girl Child Education</span><span class="dot">◆</span>
+    <span>Policy for Everyone</span><span class="dot">◆</span>
+    <span>दस्तक</span><span class="dot">◆</span>
+    <span>Underfunded Schools · Delhi</span><span class="dot">◆</span>
+    <span>SDG 5 · Gender Equality</span><span class="dot">◆</span>
+    <span>Open Source Playbook</span><span class="dot">◆</span>
+    <span>Lady Shri Ram College</span><span class="dot">◆</span>
+  </div>
+</div>
+
+<!-- ═══ ORIGIN STORY ══════════════════════════════════════════════ -->
+<section class="origin" id="origin">
+  <div class="wrap">
+    <div class="origin-inner">
+      <div>
+        <p class="label">Where Dastak Begins</p>
+        <h2 class="serif" style="font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;line-height:1.2;letter-spacing:-0.02em;margin:0.6rem 0 1.5rem;color:var(--ink);">
+          I did not arrive at this work through a textbook.
+          I arrived through a room full of children.
+        </h2>
+
+        <div class="body-text">
+          <p>When I led the fundraising initiative for our school's MUN conference in collaboration with CRY NGO — raising money that would go toward supporting a child's education — I went in expecting to feel moved. I did not expect to feel <strong>challenged.</strong></p>
+          <p>What I found was not helplessness. It was <strong>curiosity</strong> — raw, restless, almost impatient. These children wanted to learn. They asked questions faster than we could answer them. They were excited in a way that made me quietly ashamed of every time I had taken my own education for granted.</p>
+          <p>But alongside that curiosity, I saw something else: that every opportunity, every policy, every scheme designed for them had been built entirely <strong>without them.</strong> By people who had never sat in that room. The result was initiatives that existed on paper and evaporated on the ground.</p>
         </div>
+
+        <div class="pull-quote">
+          <p>"That afternoon rearranged something in me permanently. I understood that the problem was never the children's capacity. It was that nobody had handed them the language to demand what was already theirs."</p>
+          <cite>— Nandini Puri, Founder, Dastak</cite>
+        </div>
+
+        <div class="body-text">
+          <p>Dastak is my answer to that room. Named for the Hindi word for <em>a knock on the door,</em> it is built on one belief: that civic literacy is not a privilege for law students. It is a right. And a girl who learns to read a policy document is not just educated — she is finally inside the room.</p>
+        </div>
+      </div>
+
+      <div>
+        <div class="founder-card fade-up">
+          <div class="founder-top">
+            <div class="founder-avatar">NP</div>
+            <span class="founder-name">Nandini Puri</span>
+            <span class="founder-role">Founder · B.Sc. Mathematics & Economics, Year 1<br>Lady Shri Ram College for Women, University of Delhi</span>
+          </div>
+          <div class="founder-body">
+            <div class="cred-item">
+              <div class="cred-icon">🎤</div>
+              <div class="cred-text"><strong>Secretary-General, MUN Conference</strong> — 600+ delegates, 60+ volunteers. Led fundraising with CRY NGO for a child's education.</div>
+            </div>
+            <div class="cred-item">
+              <div class="cred-icon">📋</div>
+              <div class="cred-text"><strong>Curriculum Co-Designer, CanKidsCan NGO</strong> — 5-module community health programme for cancer survivors aged 9–14.</div>
+            </div>
+            <div class="cred-item">
+              <div class="cred-icon">✍️</div>
+              <div class="cred-text"><strong>Founder, Humanities Herald</strong> — school's first student-led newsletter. Because voice is a form of education.</div>
+            </div>
+            <div class="cred-item">
+              <div class="cred-icon">🤖</div>
+              <div class="cred-text"><strong>India AI Impact Summit 2026</strong> — represented LSR at the USISPF & MeitY summit. Presented research on digital pedagogy.</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:1rem;padding:1rem 1.25rem;background:var(--teal-lt);border-radius:12px;border:1px solid #b2d9cf;">
+          <p style="font-size:0.82rem;color:var(--teal);line-height:1.6;"><strong>Inspired by Project Tawwaqo</strong> — founded by LSR alumna Aditi Trivedy through the Millennium Fellowship, which built an economic empowerment bridge for Afghan refugee women in Delhi. Dastak carries the same LSR legacy forward.</p>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
-<section id="story" class="story-section">
-    <div class="wrap story-content">
-        <div>
-            <!-- Replace URL with a photo from your volunteer experience -->
-            <img src="https://images.unsplash.com/photo-1484415063229-3d6335668531?q=80&w=914&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="credits: Eugenio Mazzone/unsplash" class="story-image">
-        </div>
-        <div>
-            <p style="color: var(--vibrant-orange); font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Where it Begins</p>
-            <h2 style="margin: 1rem 0;">I arrived through a room full of children.</h2>
-            <p>Every opportunity, every policy, and every scheme designed for these children had been built entirely <strong>without them.</strong></p>
-            <p style="margin-top: 1rem;">Dastak is built on one belief: civic literacy is not a privilege, it is a right. A child, a girl who learns to read a policy document is finally inside the room.</p>
-        </div>
+<!-- ═══ THE PROBLEM ═══════════════════════════════════════════════ -->
+<section class="problem" id="problem">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <p class="label">Why This Matters</p>
+      <h2>Policy shapes every girl's life.<br><em>Yet no one teaches her to read it.</em></h2>
+      <p>Girls from underfunded communities navigate a world entirely structured by policy. Almost none have ever been taught to decode it.</p>
     </div>
+
+    <div class="problem-grid">
+      <div class="problem-card fade-up">
+        <span class="p-stat">49%</span>
+        <p class="p-label">of Indian women have never participated in any form of civic engagement or public consultation</p>
+      </div>
+      <div class="problem-card fade-up">
+        <span class="p-stat">1 in 3</span>
+        <p class="p-label">girls from low-income Delhi households cannot identify a single government welfare scheme available to them</p>
+      </div>
+      <div class="problem-card accent-card fade-up">
+        <span class="p-stat" style="color:var(--white);">0</span>
+        <p class="p-label">structured, replicable civic literacy curricula designed specifically for girl students in Delhi's underfunded government schools</p>
+      </div>
+      <div class="problem-card fade-up" style="background:rgba(255,255,255,0.08);">
+        <span class="p-stat">SDG 5.5</span>
+        <p class="p-label">calls for full participation of women in political and public life. Dastak is what that looks like on the ground, in a classroom, with a girl who is learning her voice is policy-relevant.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="how">
-    <div class="wrap">
-        <h2 style="text-align: center;">Four Months. One Playbook.</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <p class="timeline-title">August: Ground & Connect</p>
-                <p>Partnering with schools in South Delhi to map lived encounters with policy.</p>
-            </div>
-            <div class="timeline-item">
-                <p class="timeline-title">September: Decode</p>
-                <p>Translating dense government laws into plain, accessible language for students. </p>
-            </div>
-            <div class="timeline-item">
-                <p class="timeline-title">October: Amplify</p>
-                <p>Practising civic participation through petitions and guest speaker sessions.</p>
-            </div>
-            <div class="timeline-item">
-                <p class="timeline-title">Nov-Dec: Release</p>
-                <p>Publishing the open-source Playbook for other campuses to replicate.</p>
-            </div>
-        </div>
+<!-- ═══ HOW IT WORKS ══════════════════════════════════════════════ -->
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <p class="label">The Programme · August to December 2026</p>
+      <h2>Four months. Four sessions.<br><em>One playbook that outlasts us.</em></h2>
+      <p>Dastak is not a one-off event. It is a structured programme that leaves behind something permanent: girls who know how to knock, and a guide for others to follow.</p>
     </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;">
+      <div class="timeline">
+        <div class="tl-item fade-up">
+          <div class="tl-dot">01</div>
+          <div class="tl-content">
+            <p class="tl-month">August 2026</p>
+            <h3 class="tl-title">Ground & Connect</h3>
+            <p class="tl-desc">Partner with underfunded government schools and community centres in South Delhi. Build relationships with girl students aged 13–17. Map their lived encounter with policy — what schemes do they know, what decisions affect them daily, what questions they have never been allowed to ask.</p>
+          </div>
+        </div>
+        <div class="tl-item fade-up">
+          <div class="tl-dot">02</div>
+          <div class="tl-content">
+            <p class="tl-month">September 2026</p>
+            <h3 class="tl-title">Decode</h3>
+            <p class="tl-desc">Sessions 1 & 2. Using real government documents — education budgets, safety laws, welfare schemes — translated into plain language, students learn: What is a policy? How does a law affect my daily life? They annotate, question, and interpret documents that govern their own world.</p>
+          </div>
+        </div>
+        <div class="tl-item fade-up">
+          <div class="tl-dot">03</div>
+          <div class="tl-content">
+            <p class="tl-month">October 2026</p>
+            <h3 class="tl-title">Amplify</h3>
+            <p class="tl-desc">Sessions 3 & 4. Students practise civic participation: writing petitions, drafting letters to local representatives, speaking at student councils. A guest speaker — a woman working in civic life in Delhi — joins to show them what the door looks like from the inside.</p>
+          </div>
+        </div>
+        <div class="tl-item fade-up">
+          <div class="tl-dot">04</div>
+          <div class="tl-content">
+            <p class="tl-month">Nov–Dec 2026</p>
+            <h3 class="tl-title">Document & Release</h3>
+            <p class="tl-desc">Students co-author a Policy Brief on an issue they identify themselves — submitted to their school's student council or administration. The Dastak Playbook, compiling every session plan and facilitation note, is published open-source for any campus in India to replicate.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="position:sticky;top:5rem;">
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:1rem;">
+          <div style="background:var(--saffron);padding:1.25rem 1.5rem;">
+            <p style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:0.4rem;">What Success Looks Like</p>
+            <p style="font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--white);line-height:1.4;">By December 2026, every girl who goes through Dastak will have:</p>
+          </div>
+          <div style="padding:1.25rem 1.5rem;">
+            <div style="display:flex;flex-direction:column;gap:0.85rem;">
+              <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+                <div style="width:20px;height:20px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:#fff;flex-shrink:0;margin-top:2px;">✓</div>
+                <p style="font-size:0.88rem;color:var(--fog);line-height:1.5;">Read and annotated a real government document</p>
+              </div>
+              <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+                <div style="width:20px;height:20px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:#fff;flex-shrink:0;margin-top:2px;">✓</div>
+                <p style="font-size:0.88rem;color:var(--fog);line-height:1.5;">Identified at least one welfare scheme she can access</p>
+              </div>
+              <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+                <div style="width:20px;height:20px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:#fff;flex-shrink:0;margin-top:2px;">✓</div>
+                <p style="font-size:0.88rem;color:var(--fog);line-height:1.5;">Written a petition or letter to a civic representative</p>
+              </div>
+              <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+                <div style="width:20px;height:20px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:#fff;flex-shrink:0;margin-top:2px;">✓</div>
+                <p style="font-size:0.88rem;color:var(--fog);line-height:1.5;">Co-authored a Policy Brief submitted to her school</p>
+              </div>
+              <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+                <div style="width:20px;height:20px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:#fff;flex-shrink:0;margin-top:2px;">✓</div>
+                <p style="font-size:0.88rem;color:var(--fog);line-height:1.5;">Learned that her voice was policy-relevant all along</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding:1.25rem 1.5rem;background:var(--sand);border-radius:12px;border:1px solid var(--border);">
+          <p style="font-size:0.78rem;color:var(--fog);line-height:1.7;font-style:italic;font-family:var(--serif);">"The problem was never the children's capacity. It was that nobody had handed them the language to demand what was already theirs."</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="playbook" class="wrap">
-    <div class="playbook-preview">
-        <h2>A Sneak Peek into the Playbook</h2>
-        <p>A complete facilitation guide for anyone to run at their own school.</p>
-        <div class="preview-grid">
-            <div class="preview-page">
-                <h3>Module 1</h3>
-                <p>Demystifying Power: What is Policy?</p>
+<!-- ═══ PLAYBOOK ══════════════════════════════════════════════════ -->
+<section class="playbook" id="playbook">
+  <div class="wrap">
+    <div class="playbook-inner">
+      <div class="book-visual fade-up">
+        <div class="book">
+          <div class="book-spine"></div>
+          <div class="book-cover">
+            <span class="book-icon">📖</span>
+            <span class="book-title">The Dastak Playbook</span>
+            <span class="book-sub">An open-source civic literacy guide for girl students · India, 2026</span>
+          </div>
+          <div class="book-modules">
+            <div class="book-module">
+              <div class="mod-num">01</div>
+              <span class="mod-title">What is Policy? Demystifying Power</span>
+              <span class="mod-tag">90 min</span>
             </div>
-            <div class="preview-page">
-                <h3>Module 2</h3>
-                <p>How Laws Touch My Life </p>
+            <div class="book-module">
+              <div class="mod-num">02</div>
+              <span class="mod-title">How Laws Touch My Life</span>
+              <span class="mod-tag">90 min</span>
             </div>
-            <div class="preview-page">
-                <h3>Module 3</h3>
-                <p>Tools for Raising Your Voice </p>
+            <div class="book-module">
+              <div class="mod-num">03</div>
+              <span class="mod-title">Raising Your Voice — Tools & Practice</span>
+              <span class="mod-tag">90 min</span>
             </div>
+            <div class="book-module">
+              <div class="mod-num">04</div>
+              <span class="mod-title">Our Brief — Writing Policy as Citizens</span>
+              <span class="mod-tag">90 min</span>
+            </div>
+            <div class="book-module" style="background:var(--saffron-lt);">
+              <div class="mod-num" style="background:var(--white);">05</div>
+              <span class="mod-title" style="color:var(--clay);">Facilitator's Guide & Replication Kit</span>
+              <span class="mod-tag" style="color:var(--saffron);">Free</span>
+            </div>
+          </div>
         </div>
-        <p style="margin-top: 2rem; color: var(--success-green); font-weight: bold;">Coming December 2026 - Open Source & Free</p>
+        <span class="coming-soon">
+          <span>📅</span> Releasing December 2026 · Open Source · Free for all
+        </span>
+      </div>
+
+      <div class="playbook-text">
+        <p class="label">The Dastak Playbook</p>
+        <h2 class="serif" style="font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;line-height:1.2;letter-spacing:-0.02em;margin:0.6rem 0 1.25rem;color:var(--ink);">
+          What we build will <em style="color:var(--saffron);font-family:var(--display);">outlast the semester.</em>
+        </h2>
+
+        <div class="body-text">
+          <p>The most important thing Dastak will produce is not the sessions. It is the Playbook — a complete, open-source facilitation guide that any undergraduate student, anywhere in India, can pick up and run at their own school.</p>
+          <p><strong>No budget required. No prior expertise needed.</strong> Zero to civic literacy in four sessions.</p>
+          <p>Every module is designed to feel less like a class and more like a conversation. Because the goal was never to lecture girls about policy. It was to sit with them, decode it together, and hand them the language to demand what is already theirs.</p>
+          <p>The Playbook will include full session plans, facilitation scripts, real government documents decoded into plain language, petition and letter templates, a Policy Brief template co-designed with participants, and a complete replication guide for other campuses.</p>
+        </div>
+
+        <div style="margin-top:2rem;padding:1.5rem;background:var(--white);border-radius:12px;border:1px solid var(--border);">
+          <p style="font-size:0.8rem;font-weight:600;color:var(--earth);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.08em;">Who can use the Playbook?</p>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;">
+            <p style="font-size:0.88rem;color:var(--fog);">→ Any undergraduate student at any Indian university</p>
+            <p style="font-size:0.88rem;color:var(--fog);">→ NGOs and community organisations working with girls</p>
+            <p style="font-size:0.88rem;color:var(--fog);">→ School teachers and counsellors in government schools</p>
+            <p style="font-size:0.88rem;color:var(--fog);">→ Student councils and social impact clubs</p>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
-<footer class="contact-footer" id="contact">
-    <div class="wrap">
-        <h2>Want to open doors with us?</h2>
-        <p>We would be delighted to have school partners, NGO connections, and guest speakers. </p>
+<!-- ═══ SDGs ═══════════════════════════════════════════════════════ -->
+<section class="sdgs" id="sdgs">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <p class="label">Global Goals · Local Action</p>
+      <h2>Rooted in Delhi.<br><em>Aligned with the world.</em></h2>
+      <p>Dastak advances four of the UN's Sustainable Development Goals — because fixing one inequality always moves the others.</p>
+    </div>
+
+    <div class="sdg-grid">
+      <div class="sdg-card s4 fade-up">
+        <span class="sdg-num">4</span>
+        <span class="sdg-name">Quality Education</span>
+        <p class="sdg-desc">Civic literacy as a form of education that no curriculum currently provides for underserved girls.</p>
+      </div>
+      <div class="sdg-card s5 fade-up">
+        <span class="sdg-num">5</span>
+        <span class="sdg-name">Gender Equality</span>
+        <p class="sdg-desc">SDG 5.5: ensuring women's full participation in political and civic life. Dastak makes this concrete and ground-level.</p>
+      </div>
+      <div class="sdg-card s10 fade-up">
+        <span class="sdg-num">10</span>
+        <span class="sdg-name">Reduced Inequalities</span>
+        <p class="sdg-desc">Policy language has always been a gate. Dastak removes the gate — for children who needed it dismantled the most.</p>
+      </div>
+      <div class="sdg-card s16 fade-up">
+        <span class="sdg-num">16</span>
+        <span class="sdg-name">Strong Institutions</span>
+        <p class="sdg-desc">SDG 16.7: inclusive, participatory decision-making. Every Policy Brief a girl co-authors is a small act of institutional inclusion.</p>
+      </div>
+    </div>
+
+    <div class="unai-box fade-up">
+      <div>
+        <span class="unai-label">UN Academic Impact Principle</span>
+        <span class="unai-principle">Principle 2: Access to Education</span>
+      </div>
+      <p class="unai-desc">Civic literacy is not a privilege for law students. It is a right. Dastak ensures that access to education — real, usable, power-shifting education — reaches the children who need it most and receive it least.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ VISION ════════════════════════════════════════════════════ -->
+<section class="vision" id="vision">
+  <div class="wrap">
+    <div class="vision-inner">
+      <div class="vision-quote fade-up">
+        <p class="label" style="margin-bottom:1.25rem;">The Vision</p>
+        <p class="big-quote">
+          "A girl who learns that her voice is policy-relevant doesn't just knock. <em>She opens the door.</em>"
+        </p>
+        <p class="vision-byline">— Nandini Puri, Founder · Lady Shri Ram College for Women</p>
+
+        <div style="margin-top:2.5rem;" class="body-text">
+          <p>Dastak begins in one classroom in South Delhi. But the Playbook was designed from day one to travel — to every campus, every state, every girl who has been told that policy is not for her.</p>
+          <p>We do not need scale to start. We need one room, four sessions, and a group of girls who were waiting for someone to ask them what they thought.</p>
+        </div>
+      </div>
+
+      <div class="vision-cards fade-up">
+        <div class="vision-card">
+          <div class="vision-icon">🏫</div>
+          <div>
+            <p class="vision-card-title">This Semester</p>
+            <p class="vision-card-desc">Four sessions with girl students from underfunded schools in South Delhi. One co-authored Policy Brief. One open-source Playbook released by December 2026.</p>
+          </div>
+        </div>
+        <div class="vision-card">
+          <div class="vision-icon">📚</div>
+          <div>
+            <p class="vision-card-title">The Playbook's Reach</p>
+            <p class="vision-card-desc">Shared with college networks across India. Any undergraduate, any campus, zero budget. A model that grows every time someone picks it up.</p>
+          </div>
+        </div>
+        <div class="vision-card">
+          <div class="vision-icon">🌐</div>
+          <div>
+            <p class="vision-card-title">The Larger Vision</p>
+            <p class="vision-card-desc">A generation of girls in India who grow up knowing they are allowed to knock — and that when they do, the door is legally, constitutionally, undeniably theirs to open.</p>
+          </div>
+        </div>
+        <div class="vision-card" style="border-color:var(--saffron-md);background:var(--saffron-lt);">
+          <div class="vision-icon" style="background:var(--white);">✊</div>
+          <div>
+            <p class="vision-card-title" style="color:var(--clay);">Dastak is a beginning.</p>
+            <p class="vision-card-desc" style="color:var(--fog);">Not a finished project, but a first knock. We are building in public, learning as we go, and inviting anyone who believes in this to walk through the door with us.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══════════════════════════════════════════════════ -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-inner">
+      <div class="fade-up">
+        <p class="label">Get Involved</p>
+        <h2>Want to knock with us?</h2>
+        <p>Whether you are a school looking to host a session, an NGO with community connections, a fellow undergraduate who wants to co-facilitate, or a Millennium Fellow who believes in what Dastak is building — we want to hear from you.</p>
         <div class="contact-links">
-            <a href="mailto:purinandini0711@gmail.com">Email Us</a>
-            <a href="https://www.linkedin.com/in/nandinipuri">LinkedIn</a>
+          <a href="mailto:purinandini0711@gmail.com" class="contact-link">
+            <div class="contact-link-icon">✉️</div>
+            <div>
+              <span class="contact-link-label">Email</span>
+              <span class="contact-link-text">purinandini0711@gmail.com</span>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/nandinipuri" target="_blank" class="contact-link">
+            <div class="contact-link-icon">in</div>
+            <div>
+              <span class="contact-link-label">LinkedIn</span>
+              <span class="contact-link-text">Nandini Puri</span>
+            </div>
+          </a>
         </div>
-        <p style="margin-top: 3rem; font-size: 0.8rem; opacity: 0.6;"</p>
+      </div>
+
+      <div class="collab-box fade-up">
+        <h3>We are looking for</h3>
+        <div class="collab-item">
+          <div class="collab-bullet"></div>
+          <p class="collab-text"><strong>School partners</strong> in South Delhi willing to host Dastak sessions for girl students aged 13–17</p>
+        </div>
+        <div class="collab-item">
+          <div class="collab-bullet"></div>
+          <p class="collab-text"><strong>NGO connections</strong> with reach into underfunded communities — especially those already working in education or civic life</p>
+        </div>
+        <div class="collab-item">
+          <div class="collab-bullet"></div>
+          <p class="collab-text"><strong>Guest speakers</strong> — women working in policy, law, civic administration, or public life who would speak to participants</p>
+        </div>
+        <div class="collab-item">
+          <div class="collab-bullet"></div>
+          <p class="collab-text"><strong>Fellow undergraduates</strong> interested in co-facilitating sessions or helping expand the Playbook to their own campuses</p>
+        </div>
+        <div class="collab-item">
+          <div class="collab-bullet"></div>
+          <p class="collab-text"><strong>Millennium Fellows & alumni</strong> who want to support a project in its earliest, most crucial stage</p>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-logo">Dastak<span>.</span></div>
+  <p class="footer-text">A Millennium Fellowship Class of 2026 Project · Lady Shri Ram College for Women, University of Delhi</p>
+  <p class="footer-sdg">SDG 4 · 5 · 10 · 16 · UNAI Principle 2</p>
 </footer>
 
+<!-- ═══ JS ═════════════════════════════════════════════════════════ -->
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+// Close on link click
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+// Fade-up on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Hero text stagger on load
+document.querySelectorAll('.hero-text > *').forEach((el, i) => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = `opacity 0.7s ease ${i * 0.12}s, transform 0.7s ease ${i * 0.12}s`;
+  setTimeout(() => {
+    el.style.opacity = '1';
+    el.style.transform = 'translateY(0)';
+  }, 100);
+});
+document.querySelectorAll('.hero-visual > *').forEach((el, i) => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = `opacity 0.7s ease ${0.3 + i * 0.12}s, transform 0.7s ease ${0.3 + i * 0.12}s`;
+  setTimeout(() => {
+    el.style.opacity = '1';
+    el.style.transform = 'translateY(0)';
+  }, 100);
+});
+</script>
 </body>
 </html>
