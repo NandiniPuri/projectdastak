@@ -1,390 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dastak — Empowering Girls through Civic Literacy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ─── NEW COLOUR TOKENS ─────────────────────────────────────── */
+        :root {
+            --primary-blue: #1A5E9A;
+            --vibrant-orange: #E67E22;
+            --success-green: #27AE60;
+            --clean-white: #FFFFFF;
+            --soft-gray: #F4F7F6;
+            --dark-text: #2C3E50;
+            --border-light: #DCDDE1;
+            --sans: 'DM Sans', sans-serif;
+            --serif: 'Lora', serif;
+        }
 
-  <title>Project Dastak</title>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--sans); background: var(--clean-white); color: var(--dark-text); line-height: 1.6; }
+        .wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+        section { padding: 5rem 0; }
+        h1, h2, h3 { font-family: var(--serif); color: var(--primary-blue); }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+        /* ─── NAVIGATION ────────────────────────────────────────────── */
+        nav { background: var(--clean-white); border-bottom: 2px solid var(--primary-blue); padding: 1rem 0; position: sticky; top: 0; z-index: 100; }
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+        .nav-links { list-style: none; display: flex; gap: 2rem; }
+        .nav-links a { text-decoration: none; color: var(--dark-text); font-weight: 500; }
+        .nav-links a:hover { color: var(--vibrant-orange); }
+
+        /* ─── HERO SECTION ─────────────────────────────────────────── */
+        .hero { background: linear-gradient(135deg, var(--soft-gray) 0%, #e0eafc 100%); padding: 6rem 0; display: flex; align-items: center; }
+        .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 3rem; align-items: center; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 1.5rem; line-height: 1.1; }
+        .hero h1 em { color: var(--vibrant-orange); font-style: normal; }
+        .btn-main { background: var(--vibrant-orange); color: white; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 1rem; }
+
+        /* ─── STATS SECTION (MOVED UP) ─────────────────────────────── */
+        .stats-section { background: var(--primary-blue); color: white; text-align: center; }
+        .stats-grid { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem; margin-top: 3rem; }
+        .stat-item { flex: 1; min-width: 200px; }
+        .stat-circle { width: 120px; height: 120px; border: 4px solid var(--vibrant-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.8rem; font-weight: bold; font-family: var(--serif); }
+
+        /* ─── ORIGIN STORY (FOUNDER BOX REMOVED) ───────────────────── */
+        .story-section { background: var(--clean-white); }
+        .story-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .story-image { width: 100%; border-radius: 20px; box-shadow: 20px 20px 0 var(--success-green); }
+
+        /* ─── TIMELINE ─────────────────────────────────────────────── */
+        .timeline { position: relative; max-width: 800px; margin: 4rem auto 0; padding-left: 2rem; border-left: 4px solid var(--success-green); }
+        .timeline-item { margin-bottom: 3rem; position: relative; }
+        .timeline-item::before { content: ''; position: absolute; left: -2.6rem; top: 0; width: 20px; height: 20px; background: var(--vibrant-orange); border-radius: 50%; }
+        .timeline-title { color: var(--success-green); font-weight: bold; text-transform: uppercase; margin-bottom: 0.5rem; }
+
+        /* ─── PLAYBOOK (VISUAL STYLE) ─────────────────────────────── */
+        .playbook-preview { background: var(--soft-gray); border-radius: 30px; padding: 4rem; text-align: center; }
+        .preview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .preview-page { background: white; padding: 2rem; border: 1px solid var(--border-light); border-top: 10px solid var(--primary-blue); transition: transform 0.3s; }
+        .preview-page:hover { transform: translateY(-10px); }
+
+        /* ─── CONTACT (REDUCED BOXES) ──────────────────────────────── */
+        .contact-footer { background: var(--dark-text); color: white; padding: 4rem 0; text-align: center; }
+        .contact-links { display: flex; justify-content: center; gap: 3rem; margin-top: 2rem; }
+        .contact-links a { color: var(--vibrant-orange); text-decoration: none; font-size: 1.2rem; }
+
+        @media (max-width: 768px) {
+            .hero-grid, .story-content { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
 </head>
-
 <body>
 
-  <!-- NAVBAR -->
-
-  <nav>
-
-    <div class="logo">
-      Project <span>Dastak</span>
+<nav>
+    <div class="wrap nav-inner">
+        <h2 style="color: var(--primary-blue);">Dastak<span>.</span></h2>
+        <ul class="nav-links">
+            <li><a href="#stats">The Problem</a></li>
+            <li><a href="#story">Our Story</a></li>
+            <li><a href="#how">Timeline</a></li>
+            <li><a href="#playbook">Playbook</a></li>
+        </ul>
     </div>
+</nav>
 
-    <div class="nav-links">
-      <a href="#problem">The Problem</a>
-      <a href="#timeline">Roadmap</a>
-      <a href="#playbook">Playbook</a>
-      <a href="#founder">Founder</a>
+<section class="hero">
+    <div class="wrap hero-grid">
+        <div class="hero-text">
+            <h1>Because every girl deserves to <em>knock.</em></h1>
+            <p>Dastak is a civic literacy initiative putting the language of policy into the hands of girls in Delhi who were never told the door was theirs to open. [1]</p>
+            <a href="#playbook" class="btn-main">Explore the Playbook</a>
+        </div>
+        <div class="hero-image">
+            <!-- Replace URL with an actual photo of girls studying -->
+            <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=600" alt="Girls studying" style="width: 100%; border-radius: 30px; border: 8px solid white; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+        </div>
     </div>
+</section>
 
-    <a href="#contact" class="nav-btn">
-      Join Us
-    </a>
-
-  </nav>
-
-  <!-- HERO -->
-
-  <section class="hero">
-
-    <div class="hero-blob"></div>
-
-    <div class="hero-left">
-
-      <div class="hero-pill">
-        SDG 4 · SDG 5 · SDG 16
-      </div>
-
-      <h1>
-        Opening their doors to the world.
-      </h1>
-
-      <p class="hero-text">
-        Project Dastak teaches girls the language of policy,
-        civic participation, and institutional power —
-        because voice should never be gated by privilege.
-      </p>
-
-      <div class="hero-buttons">
-
-        <a href="#playbook" class="primary-btn">
-          Explore the Playbook
-        </a>
-
-        <a href="#problem" class="secondary-btn">
-          Why this matters →
-        </a>
-
-      </div>
-
-    </div>
-
-    <div class="hero-right">
-
-  <img src="https://raw.githubusercontent.com/nandinipuri/projectdastak/main/library.jpeg.jpg"
-       alt="Project Dastak Library"
-       class="hero-image">
-
-  <div class="floating-card">
-
+<section id="stats" class="stats-section">
+    <div class="wrap">
+        <h2>Why Dastak Matters</h2>
+        <p style="opacity: 0.8;">Policy shapes every girl's life, yet no one teaches her to read it. [2]</p>
         <div class="stats-grid">
-
-          <div class="stat-box">
-            <h3>4</h3>
-            <p>Workshops</p>
-          </div>
-
-          <div class="stat-box">
-            <h3>30+</h3>
-            <p>Girls Reached</p>
-          </div>
-
-          <div class="stat-box">
-            <h3>1</h3>
-            <p>Policy Brief</p>
-          </div>
-
+            <div class="stat-item">
+                <div class="stat-circle">49%</div>
+                <p>Of Indian women have never participated in civic engagement. [3]</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-circle">1 in 3</div>
+                <p>Girls cannot identify a single government welfare scheme. [3]</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-circle">SDG 5</div>
+                <p>Ensuring full participation in political and public life. [4]</p>
+            </div>
         </div>
-
-        <p class="card-text">
-          Civic literacy initiative rooted in Delhi,
-          designed to create scalable policy education
-          for underserved girl students.
-        </p>
-
-        <div class="tag-row">
-          <span>Policy Literacy</span>
-          <span>Gender Equity</span>
-          <span>Open Source</span>
-        </div>
-
-      </div>
-
     </div>
+</section>
 
-  </section>
-
-  <!-- PROBLEM -->
-
-  <section class="problem-section" id="problem">
-
-    <div class="problem-left">
-
-      <p class="section-label">
-        THE PROBLEM
-      </p>
-
-      <h2>
-        Policy shapes every girl's life.
-        Yet no one teaches her to read it.
-      </h2>
-
-      <p class="problem-text">
-        Across India, millions of girls grow up under systems
-        shaped entirely by policy decisions —
-        education schemes, welfare access, safety laws,
-        and institutional structures —
-        while remaining excluded from understanding them.
-      </p>
-
-      <p class="problem-text">
-        Project Dastak exists to bridge that distance between
-        governance and lived experience.
-      </p>
-
-    </div>
-
-    <div class="problem-right">
-
-      <div class="impact-card">
-        <h3>49%</h3>
-        <p>
-          of Indian women have never participated
-          in civic engagement.
-        </p>
-      </div>
-
-      <div class="impact-card">
-        <h3>1 in 3</h3>
-        <p>
-          girls cannot identify a welfare scheme
-          available to them.
-        </p>
-      </div>
-
-      <div class="impact-card">
-        <h3>0</h3>
-        <p>
-          structured civic literacy curricula exist
-          for underserved girls.
-        </p>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- TIMELINE -->
-
-  <section class="timeline-section" id="timeline">
-
-    <p class="section-label">
-      ROADMAP
-    </p>
-
-    <h2 class="center-heading">
-      Four months. Four sessions.
-      One playbook that outlasts us.
-    </h2>
-
-    <div class="timeline-grid">
-
-      <div class="timeline-card">
-
-        <div class="timeline-number">01</div>
-
-        <h3>Ground & Connect</h3>
-
-        <span>August</span>
-
-        <p>
-          Partner with schools and build foundational
-          relationships with students.
-        </p>
-
-      </div>
-
-      <div class="timeline-card">
-
-        <div class="timeline-number">02</div>
-
-        <h3>Decode</h3>
-
-        <span>September</span>
-
-        <p>
-          Break down policy language into accessible,
-          understandable civic literacy.
-        </p>
-
-      </div>
-
-      <div class="timeline-card">
-
-        <div class="timeline-number">03</div>
-
-        <h3>Amplify</h3>
-
-        <span>October</span>
-
-        <p>
-          Teach petitions, public voice,
-          institutional participation,
-          and advocacy.
-        </p>
-
-      </div>
-
-      <div class="timeline-card">
-
-        <div class="timeline-number">04</div>
-
-        <h3>Document & Release</h3>
-
-        <span>November–December</span>
-
-        <p>
-          Publish the open-source Dastak Playbook
-          for replication across campuses.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- PLAYBOOK -->
-
-  <section class="playbook-section" id="playbook">
-
-    <div class="playbook-left">
-
-      <p class="section-label">
-        THE PLAYBOOK
-      </p>
-
-      <h2>
-        What we build should outlast the semester.
-      </h2>
-
-      <p class="playbook-text">
-        The Dastak Playbook is an open-source civic literacy toolkit
-        designed so that any student, anywhere,
-        can replicate meaningful policy education
-        for underserved communities.
-      </p>
-
-      <div class="module-list">
-
-        <div class="module">
-          <span>01</span>
-          <div>
-            <h4>What is Policy?</h4>
-            <p>Understanding governance in plain language.</p>
-          </div>
+<section id="story" class="story-section">
+    <div class="wrap story-content">
+        <div>
+            <!-- Replace URL with a photo from your volunteer experience -->
+            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=600" alt="Learning environment" class="story-image">
         </div>
-
-        <div class="module">
-          <span>02</span>
-          <div>
-            <h4>How Laws Affect Daily Life</h4>
-            <p>Connecting institutions to lived realities.</p>
-          </div>
+        <div>
+            <p style="color: var(--vibrant-orange); font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Where it Begins</p>
+            <h2 style="margin: 1rem 0;">I arrived through a room full of children.</h2>
+            <p>Every opportunity, every policy, and every scheme designed for these children had been built entirely <strong>without them.</strong> [5]</p>
+            <p style="margin-top: 1rem;">Dastak is built on one belief: civic literacy is not a privilege, it is a right. A girl who learns to read a policy document is finally inside the room. [6]</p>
         </div>
-
-        <div class="module">
-          <span>03</span>
-          <div>
-            <h4>Raising Your Voice</h4>
-            <p>Petitions, representation, and participation.</p>
-          </div>
-        </div>
-
-        <div class="module">
-          <span>04</span>
-          <div>
-            <h4>Writing Policy Briefs</h4>
-            <p>Students co-authoring civic demands.</p>
-          </div>
-        </div>
-
-      </div>
-
     </div>
+</section>
 
+<section id="how">
+    <div class="wrap">
+        <h2 style="text-align: center;">Four Months. One Playbook.</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <p class="timeline-title">August: Ground & Connect</p>
+                <p>Partnering with schools in South Delhi to map lived encounters with policy. [7]</p>
+            </div>
+            <div class="timeline-item">
+                <p class="timeline-title">September: Decode</p>
+                <p>Translating dense government laws into plain, accessible language for students. [8]</p>
+            </div>
+            <div class="timeline-item">
+                <p class="timeline-title">October: Amplify</p>
+                <p>Practising civic participation through petitions and guest speaker sessions. [9]</p>
+            </div>
+            <div class="timeline-item">
+                <p class="timeline-title">Nov-Dec: Release</p>
+                <p>Publishing the open-source Playbook for other campuses to replicate. [10]</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="playbook" class="wrap">
     <div class="playbook-preview">
-
-      <h3>
-        Included Inside
-      </h3>
-
-      <ul>
-
-        <li>✓ Workshop Facilitation Guides</li>
-        <li>✓ Simplified Policy Documents</li>
-        <li>✓ Petition Templates</li>
-        <li>✓ Civic Participation Exercises</li>
-        <li>✓ Replication Framework</li>
-
-      </ul>
-
+        <h2>A Sneak Peek into the Playbook</h2>
+        <p>A complete facilitation guide for anyone to run at their own school. [11]</p>
+        <div class="preview-grid">
+            <div class="preview-page">
+                <h3>Module 1</h3>
+                <p>Demystifying Power: What is Policy? [12]</p>
+            </div>
+            <div class="preview-page">
+                <h3>Module 2</h3>
+                <p>How Laws Touch My Life [12]</p>
+            </div>
+            <div class="preview-page">
+                <h3>Module 3</h3>
+                <p>Tools for Raising Your Voice [13]</p>
+            </div>
+        </div>
+        <p style="margin-top: 2rem; color: var(--success-green); font-weight: bold;">Coming December 2026 · Open Source & Free [14]</p>
     </div>
+</section>
 
-  </section>
-
-  <!-- FOUNDER -->
-
-  <section class="founder-section" id="founder">
-
-    <div class="founder-content">
-
-      <p class="section-label">
-        FOUNDER
-      </p>
-
-      <h2>
-        Voice is a form of education.
-      </h2>
-
-      <p>
-        Project Dastak was founded by Nandini Puri,
-        a student of Mathematics and Economics
-        at Lady Shri Ram College for Women,
-        University of Delhi.
-      </p>
-
-      <p>
-        The project emerges from a simple belief:
-        civic literacy should not remain restricted
-        to privileged spaces.
-      </p>
-
+<footer class="contact-footer" id="contact">
+    <div class="wrap">
+        <h2>Want to knock with us?</h2>
+        <p>We are looking for school partners, NGO connections, and guest speakers. [15, 16]</p>
+        <div class="contact-links">
+            <a href="mailto:purinandini0711@gmail.com">Email Us</a>
+            <a href="https://www.linkedin.com/in/nandinipuri">LinkedIn</a>
+        </div>
+        <p style="margin-top: 3rem; font-size: 0.8rem; opacity: 0.6;">A Millennium Fellowship Class of 2026 Project · LSR College [17]</p>
     </div>
-
-  </section>
-
-  <!-- CONTACT -->
-
-  <section class="contact-section" id="contact">
-
-    <p class="section-label">
-      GET INVOLVED
-    </p>
-
-    <h2>
-      Bring civic literacy to every girl
-      excluded from power.
-    </h2>
-
-    <a href="mailto:your@email.com" class="contact-btn">
-      Contact Project Dastak
-    </a>
-
-  </section>
+</footer>
 
 </body>
-
 </html>
